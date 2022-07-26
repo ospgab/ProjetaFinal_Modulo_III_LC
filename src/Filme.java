@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Filme {
     private int rank;
     private String titulo;
-    private String genero;
+    private ArrayList<String> genero;
     private String descricao;
     private String diretor;
     private ArrayList<String> atores;
@@ -19,23 +19,57 @@ public class Filme {
 
     public Filme(String rank, String titulo, String genero, String descricao,
                  String diretor, String atores, String ano, String duracao, String rating,
-                 String quantidadeVotos, BigDecimal lucro, String metascore) {
+                 String quantidadeVotos, String lucro, String metascore) {
         this.rank = Integer.parseInt(rank);
         this.titulo = titulo;
-        this.genero = genero;
+        this.genero = separaNomes(genero);
         this.descricao = descricao;
         this.diretor = diretor;
         this.atores = separaNomes(atores);
         this.ano = Year.parse(ano);
-        this.duracao = Duration.parse(duracao);
+        this.duracao = Duration.parse("PT"+duracao+"M");
         this.rating = Double.parseDouble(rating);
         this.quantidadeVotos = Long.parseLong(quantidadeVotos);
-        this.lucro = lucro;
+        this.lucro = BigDecimal.valueOf(Double.parseDouble(lucro));
+        this.metascore = Double.parseDouble(metascore);
+    }
+
+
+
+    public Filme(String rank, String titulo, String genero, String descricao,
+                 String diretor, String atores, String ano, String duracao, String rating,
+                 String quantidadeVotos) {
+        // Sem Lucro e Metascore
+        this.rank = Integer.parseInt(rank);
+        this.titulo = titulo;
+        this.genero = separaNomes(genero);
+        this.descricao = descricao;
+        this.diretor = diretor;
+        this.atores = separaNomes(atores);
+        this.ano = Year.parse(ano);
+        this.duracao = Duration.parse("PT"+duracao+"M");
+        this.rating = Double.parseDouble(rating);
+        this.quantidadeVotos = Long.parseLong(quantidadeVotos);
+    }
+
+    public Filme(String rank, String titulo, String genero, String descricao,
+                 String diretor, String atores, String ano, String duracao, String rating,
+                 String quantidadeVotos, String metascore) {
+        // Sem Lucro
+        this.rank = Integer.parseInt(rank);
+        this.titulo = titulo;
+        this.genero = separaNomes(genero);
+        this.descricao = descricao;
+        this.diretor = diretor;
+        this.atores = separaNomes(atores);
+        this.ano = Year.parse(ano);
+        this.duracao = Duration.parse("PT"+duracao+"M");
+        this.rating = Double.parseDouble(rating);
+        this.quantidadeVotos = Long.parseLong(quantidadeVotos);
         this.metascore = Double.parseDouble(metascore);
     }
 
     private ArrayList<String> separaNomes(String nomes){
-        nomes = nomes.substring(1);
         nomes = nomes.replaceAll("\"", "");
         String[] nomes2 = nomes.split(",");
         ArrayList<String> nomesSeparados = new ArrayList<>();
@@ -62,11 +96,11 @@ public class Filme {
         this.titulo = titulo;
     }
 
-    public String getGenero() {
+    public ArrayList<String> getGenero() {
         return genero;
     }
 
-    public void setGenero(String genero) {
+    public void setGenero(ArrayList<String> genero) {
         this.genero = genero;
     }
 
@@ -140,6 +174,24 @@ public class Filme {
 
     public void setMetascore(double metascore) {
         this.metascore = metascore;
+    }
+
+    @Override
+    public String toString() {
+        return "Filme{" +
+                "rank=" + rank +
+                ", \ntitulo='" + titulo + '\'' +
+                ", \ngenero='" + genero + '\'' +
+                ", \ndescricao='" + descricao + '\'' +
+                ", \ndiretor='" + diretor + '\'' +
+                ", \natores=" + atores +
+                ", \nano=" + ano +
+                ", \nduracao=" + duracao +
+                ", \nrating=" + rating +
+                ", \nquantidadeVotos=" + quantidadeVotos +
+                ", \nlucro=" + lucro +
+                ", \nmetascore=" + metascore +
+                '}';
     }
 }
 

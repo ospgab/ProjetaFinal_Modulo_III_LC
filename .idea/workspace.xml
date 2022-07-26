@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="50f3c83e-1f21-4626-9a15-b9aef39ab937" name="Changes" comment="Primeiro Commit" />
+    <list default="true" id="50f3c83e-1f21-4626-9a15-b9aef39ab937" name="Changes" comment="Leitura inicial das linhas e classe Filmes">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Filme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Filme.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Leitura.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Leitura.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -14,17 +25,33 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2CRZT4ZGp5kYwWE1DHezjME0qIw" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\F3548784\IdeaProjects\ProjetoFinal_Modulo_III_LC\dados" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Java" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Leitura" />
+      <module name="ProjetoFinal_Modulo_III_LC" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -41,7 +68,28 @@
       <option name="project" value="LOCAL" />
       <updated>1658767448468</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Primeiro Commit">
+      <created>1658767717390</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1658767717390</updated>
+    </task>
+    <task id="LOCAL-00003" summary="dados">
+      <created>1658767890805</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1658767890805</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Leitura inicial das linhas e classe Filmes">
+      <created>1658856734338</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1658856734338</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -57,6 +105,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Primeiro Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Primeiro Commit" />
+    <MESSAGE value="dados" />
+    <MESSAGE value="Leitura inicial das linhas e classe Filmes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Leitura inicial das linhas e classe Filmes" />
   </component>
 </project>
