@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="50f3c83e-1f21-4626-9a15-b9aef39ab937" name="Changes" comment="Instanciar os filmes e coloca-los em um Set">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Filme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Filme.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Leitura.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Leitura.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/bb/letscode/projetofinal3/model/Filme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/bb/letscode/projetofinal3/model/Filme.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/bb/letscode/projetofinal3/service/Leitura.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/bb/letscode/projetofinal3/service/Leitura.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,20 +32,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\F2370438\Dev\LetsCode\IdeaProjects\ProjetaFinal_Modulo_III_LC\src\main\java\br\com\bb\letscode\projetofinal3" />
       <recent name="C:\Users\F3548784\IdeaProjects\ProjetoFinal_Modulo_III_LC\dados" />
     </key>
   </component>
   <component name="RunManager">
     <configuration name="Java" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Leitura" />
+      <option name="MAIN_CLASS_NAME" value="br.com.bb.letscode.projetofinal3.service.Leitura" />
       <module name="ProjetoFinal_Modulo_III_LC" />
       <method v="2">
         <option name="Make" enabled="true" />

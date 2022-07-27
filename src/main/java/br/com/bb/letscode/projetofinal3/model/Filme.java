@@ -1,3 +1,5 @@
+package br.com.bb.letscode.projetofinal3.model;
+
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.Year;
