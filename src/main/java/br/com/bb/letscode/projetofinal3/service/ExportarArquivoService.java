@@ -63,6 +63,7 @@ public class ExportarArquivoService {
     }
 
     public void salvar() throws IOException {
+        Files.createDirectories(caminho.getParent());
         Files.write(caminho, linhas);
     }
 
