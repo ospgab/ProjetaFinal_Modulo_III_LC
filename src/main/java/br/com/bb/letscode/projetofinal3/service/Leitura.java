@@ -18,7 +18,7 @@ public class Leitura {
     public static void main(String[] args) throws IOException {
 
         // pega cada linha do arquivo
-        List<String> dataBaseBruto = Files.lines(Paths.get("C:\\Users\\F3548784\\IdeaProjects\\ProjetoFinal_Modulo_III_LC\\src\\main\\resources\\dados\\movies1.csv"))
+        List<String> dataBaseBruto = Files.lines(Paths.get("src\\main\\resources\\dados\\movies1.csv"))
                 .skip(1)
                 .filter(line -> line.contains(" "))
                 .collect(Collectors.toList());
@@ -59,6 +59,9 @@ public class Leitura {
 
 
         List<List<Filme>> aaaa = Analisador.getMelhores50Anuais(dataBaseTrabalhado);
+
+        ExportarArquivoService saida = new ExportarArquivoService("topHorror.csv", topHorror);
+        saida.salvar();
 
 
 
