@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="50f3c83e-1f21-4626-9a15-b9aef39ab937" name="Changes" comment="Leitura inicial das linhas e classe Filmes">
+    <list default="true" id="50f3c83e-1f21-4626-9a15-b9aef39ab937" name="Changes" comment="Instanciar os filmes e coloca-los em um Set">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Filme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Filme.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Leitura.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Leitura.java" afterDir="false" />
@@ -89,7 +89,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658856734338</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Instanciar os filmes e coloca-los em um Set">
+      <created>1658870624619</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1658870624619</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -107,6 +114,7 @@
     <MESSAGE value="Primeiro Commit" />
     <MESSAGE value="dados" />
     <MESSAGE value="Leitura inicial das linhas e classe Filmes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Leitura inicial das linhas e classe Filmes" />
+    <MESSAGE value="Instanciar os filmes e coloca-los em um Set" />
+    <option name="LAST_COMMIT_MESSAGE" value="Instanciar os filmes e coloca-los em um Set" />
   </component>
 </project>

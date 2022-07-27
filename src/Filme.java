@@ -3,7 +3,7 @@ import java.time.Duration;
 import java.time.Year;
 import java.util.ArrayList;
 
-public class Filme {
+public class Filme implements Comparable {
     private int rank;
     private String titulo;
     private ArrayList<String> genero;
@@ -17,57 +17,21 @@ public class Filme {
     private BigDecimal lucro;
     private double metascore;
 
-    public Filme(String rank, String titulo, String genero, String descricao,
-                 String diretor, String atores, String ano, String duracao, String rating,
-                 String quantidadeVotos, String lucro, String metascore) {
-        this.rank = Integer.parseInt(rank);
-        this.titulo = titulo;
-        this.genero = separaNomes(genero);
-        this.descricao = descricao;
-        this.diretor = diretor;
-        this.atores = separaNomes(atores);
-        this.ano = Year.parse(ano);
-        this.duracao = Duration.parse("PT"+duracao+"M");
-        this.rating = Double.parseDouble(rating);
-        this.quantidadeVotos = Long.parseLong(quantidadeVotos);
-        this.lucro = BigDecimal.valueOf(Double.parseDouble(lucro));
-        this.metascore = Double.parseDouble(metascore);
+    public Filme(ArrayList<String> entrada) {
+        this.rank =  Integer.parseInt(entrada.get(0));
+        this.titulo = entrada.get(1);
+        this.genero = separaNomes(entrada.get(2));
+        this.descricao = entrada.get(3);
+        this.diretor = entrada.get(4);
+        this.atores = separaNomes(entrada.get(5));
+        this.ano = Year.parse(entrada.get(6));
+        this.duracao = Duration.parse("PT"+entrada.get(7)+"M");
+        this.rating = Double.parseDouble(entrada.get(8));
+        this.quantidadeVotos = Long.parseLong(entrada.get(9));
+        this.lucro = BigDecimal.valueOf(Double.parseDouble((entrada.get(10).isEmpty()? "0": entrada.get(10))));
+        this.metascore = Double.parseDouble(entrada.get(11).isEmpty()? "0": entrada.get(11));
     }
 
-
-
-    public Filme(String rank, String titulo, String genero, String descricao,
-                 String diretor, String atores, String ano, String duracao, String rating,
-                 String quantidadeVotos) {
-        // Sem Lucro e Metascore
-        this.rank = Integer.parseInt(rank);
-        this.titulo = titulo;
-        this.genero = separaNomes(genero);
-        this.descricao = descricao;
-        this.diretor = diretor;
-        this.atores = separaNomes(atores);
-        this.ano = Year.parse(ano);
-        this.duracao = Duration.parse("PT"+duracao+"M");
-        this.rating = Double.parseDouble(rating);
-        this.quantidadeVotos = Long.parseLong(quantidadeVotos);
-    }
-
-    public Filme(String rank, String titulo, String genero, String descricao,
-                 String diretor, String atores, String ano, String duracao, String rating,
-                 String quantidadeVotos, String metascore) {
-        // Sem Lucro
-        this.rank = Integer.parseInt(rank);
-        this.titulo = titulo;
-        this.genero = separaNomes(genero);
-        this.descricao = descricao;
-        this.diretor = diretor;
-        this.atores = separaNomes(atores);
-        this.ano = Year.parse(ano);
-        this.duracao = Duration.parse("PT"+duracao+"M");
-        this.rating = Double.parseDouble(rating);
-        this.quantidadeVotos = Long.parseLong(quantidadeVotos);
-        this.metascore = Double.parseDouble(metascore);
-    }
 
     private ArrayList<String> separaNomes(String nomes){
         nomes = nomes.replaceAll("\"", "");
@@ -192,6 +156,12 @@ public class Filme {
                 ", \nlucro=" + lucro +
                 ", \nmetascore=" + metascore +
                 '}';
+    }
+
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }
 

@@ -1,10 +1,7 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -12,53 +9,58 @@ import java.util.stream.Collectors;
 public class Leitura {
     public static void main(String[] args) throws IOException {
 
-
-        List<String> db = Files.lines(Paths.get("C:/Users/F3548784/IdeaProjects/ProjetoFinal_Modulo_III_LC/dados/movies1.csv"))
+        // pega cada linha do arquivo
+        List<String> dataBaseBruto = Files.lines(Paths.get("C:/Users/F3548784/IdeaProjects/ProjetoFinal_Modulo_III_LC/dados/movies1.csv"))
                 .skip(1)
                 .filter(line -> line.contains(" "))
                 .collect(Collectors.toList());
 
-        Set<Filme> locadora = new HashSet<>();
-        for(String entrada: db) {
+        // Compara cada linha da tabela com o regex para separá-la em grupos
+        Set<Filme> dataBaseTrabalhado = new HashSet<Filme>(){
+
+        };
+        for(String entrada: dataBaseBruto) {
             final Matcher matcher = Pattern
                     .compile("(?:,|\n|^)(\"(?:(?:\"\")*[^\"]*)*\"|[^\",\n]*|(?:\n|$))")
                     .matcher(entrada);
 
-            ArrayList<String> nova = new ArrayList<>();
+            //instanciar um filme a partir dos campos do regex
+            ArrayList<String> filmeSeparado = new ArrayList<>();
             while (matcher.find()) {
                 String novaEntrada = matcher.group(1);
                 //System.out.println("Group: " + matcher.group(1));
-                nova.add(novaEntrada);
+                filmeSeparado.add(novaEntrada);
             }
 
-            Filme filme = new Filme(nova.get(0), nova.get(1), nova.get(2), nova.get(3), nova.get(4), nova.get(5), nova.get(6),
-                    nova.get(7), nova.get(8), nova.get(9), (nova.get(10).isEmpty()? "0": nova.get(10)), (nova.get(11).isEmpty()? "0": nova.get(11)));
-            locadora.add(filme);
+            // adicionar os objetos filmes numa collection
+            Filme filme = new Filme(filmeSeparado);
+            dataBaseTrabalhado.add(filme);
             //System.out.println(filme.toString());
         }
 
+        /*
+        Comparator<Filme> comparator = new Comparator<Filme>() {
+            @Override
+                public int compare(Filme filme1, Filme filme2) {
+                if(filme1.getRank()> filme2.getRank()) return 1;
+                else if (filme1.getRank()< filme2.getRank()) return -1;
+                return 0;
+                }
 
-        locadora.stream()
-                .filter(filme -> filme.getGenero().contains("Thriller"))
-                .forEach(System.out::println);
+        };
+
+         */
 
 
 
+        List<Filme> topHorror = dataBaseTrabalhado.stream()
+                .filter(filme -> filme.getGenero().contains("Horror"))
+                //.sorted( (filme1, filme2) -> filme1.compareTo(filme2))
+                .sorted()
+                .collect(Collectors.toList());
 
-        
+        topHorror.stream().forEach(System.out::println);
 
-// Rank
-// Title
-// Genre
-// Description
-// Director
-// Actors
-// Year
-// Runtime (Minutes)
-// Rating
-// Votes
-// Revenue (Millions)
-// Metascore
 
 
     }
