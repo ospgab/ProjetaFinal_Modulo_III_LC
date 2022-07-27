@@ -2,6 +2,7 @@ package br.com.bb.letscode.projetofinal3.model;
 
 import java.math.BigDecimal;
 import java.time.Year;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -60,12 +61,54 @@ public class Analisador {
     }
 
     public static List<Filme> getMaiorLucro(HashSet<Filme> dataBaseTrabalhado){
-        List<Filme> topHorror = dataBaseTrabalhado.stream()
+        List<Filme> maiorLucro = dataBaseTrabalhado.stream()
                 .filter(filme -> filme.getLucro().compareTo(BigDecimal.valueOf(0.01))==1)
                 .sorted(comparatorLucro)
                 .limit(50)
                 .collect(Collectors.toList());
 
-        return topHorror;
+        return maiorLucro;
     }
+
+    public static List<Filme> getPorGenero(HashSet<Filme> dataBaseTrabalhado, String genero){
+        List<Filme> topGenero = dataBaseTrabalhado.stream()
+                .filter(filme -> filme.getGenero().contains(genero))
+                .sorted(comparatorRating)
+                .limit(20)
+                .collect(Collectors.toList());
+
+        return topGenero;
+    }
+
+    public static List<Filme> getPorDiretor(HashSet<Filme> dataBaseTrabalhado, String diretor){
+        List<Filme> filmesDiretor = dataBaseTrabalhado.stream()
+                .filter(filme -> filme.getDiretor().contains(diretor))
+                .sorted(comparatorRating)
+                .limit(20)
+                .collect(Collectors.toList());
+
+        return filmesDiretor;
+    }
+
+    public static List<Filme> getPorAtor(HashSet<Filme> dataBaseTrabalhado, String ator){
+        List<Filme> filmesAtor = dataBaseTrabalhado.stream()
+                .filter(filme -> filme.getAtores().contains(ator))
+                .sorted(comparatorRating)
+                .limit(20)
+                .collect(Collectors.toList());
+
+        return filmesAtor;
+    }
+
+    public static List<Filme> getPorAno(HashSet<Filme> dataBaseTrabalhado, String ano){
+        List<Filme> filmesAno = dataBaseTrabalhado.stream()
+                .filter(filme -> filme.getAno().equals(Year.parse(ano, DateTimeFormatter.ofPattern("yyyy"))))
+                .sorted(comparatorRating)
+                .limit(20)
+                .collect(Collectors.toList());
+
+        return filmesAno;
+    }
+
 }
+

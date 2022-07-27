@@ -63,11 +63,32 @@ public class Leitura {
 //        ExportarArquivoService saida = new ExportarArquivoService("topHorror.csv", topHorror);
 //        saida.salvar();
 
-        List<Filme> bbb = Analisador.getMaiorLucro(dataBaseTrabalhado);
+//        List<Filme> bbb = Analisador.getMaiorLucro(dataBaseTrabalhado);
+//
+//        for(Filme filme:bbb){
+//            System.out.println(filme.getLucro() + " " + filme.getTitulo());
+//        }
+//
+//        List<Filme> ccc = Analisador.getPorGenero(dataBaseTrabalhado, "Drama");
+//        for(Filme filme:ccc){
+//            System.out.println(filme.getRating() + " " + filme.getTitulo() + " " + filme.getGenero());
+//        }
 
-        for(Filme filme:bbb){
-            System.out.println(filme.getLucro() + " " + filme.getTitulo());
+        List<Filme> ddd = Analisador.getPorDiretor(dataBaseTrabalhado, "James");
+        for(Filme filme:ddd){
+            System.out.println(filme.getRating() + " " + filme.getTitulo() + " " + filme.getDiretor());
         }
+
+        List<Filme> eee = Analisador.getPorAtor(dataBaseTrabalhado, "Chris Pratt");
+        for(Filme filme:eee){
+            System.out.println(filme.getRating() + " " + filme.getTitulo() + " " + filme.getAtores());
+        }
+
+        List<Filme> fff = Analisador.getPorAno(dataBaseTrabalhado, "2015");
+        for(Filme filme:fff){
+            System.out.println(filme.getRating() + " " + filme.getTitulo() + " " + filme.getAno());
+        }
+
 
     }
 }
