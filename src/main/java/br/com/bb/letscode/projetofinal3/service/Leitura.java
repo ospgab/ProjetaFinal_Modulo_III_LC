@@ -52,18 +52,22 @@ public class Leitura {
 
 
 
-        List<Filme> topHorror = Analisador.getMelhores20Terror(dataBaseTrabalhado);
+//        List<Filme> topHorror = Analisador.getMelhores20Terror(dataBaseTrabalhado);
+//
+//        topHorror.stream()
+//                .forEach(filme -> System.out.println(filme.getRating() + " " + filme.getTitulo()));
+//
+//
+//        List<List<Filme>> aaaa = Analisador.getMelhores50Anuais(dataBaseTrabalhado);
 
-        topHorror.stream()
-                .forEach(filme -> System.out.println(filme.getRating() + " " + filme.getTitulo()));
+//        ExportarArquivoService saida = new ExportarArquivoService("topHorror.csv", topHorror);
+//        saida.salvar();
 
+        List<Filme> bbb = Analisador.getMaiorLucro(dataBaseTrabalhado);
 
-        List<List<Filme>> aaaa = Analisador.getMelhores50Anuais(dataBaseTrabalhado);
-
-        ExportarArquivoService saida = new ExportarArquivoService("topHorror.csv", topHorror);
-        saida.salvar();
-
-
+        for(Filme filme:bbb){
+            System.out.println(filme.getLucro() + " " + filme.getTitulo());
+        }
 
     }
 }
