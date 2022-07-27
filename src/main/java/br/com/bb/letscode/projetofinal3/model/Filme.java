@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.Year;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Filme implements Comparable {
     private int rank;
@@ -164,6 +165,19 @@ public class Filme implements Comparable {
     @Override
     public int compareTo(Object o) {
         return 0;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Filme)) return false;
+        Filme filme = (Filme) o;
+        return getTitulo().equals(filme.getTitulo()) && getDiretor().equals(filme.getDiretor()) && getAno().equals(filme.getAno());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getTitulo(), getDiretor(), getAno());
     }
 }
 

@@ -1,22 +1,30 @@
+package br.com.bb.letscode.projetofinal3.service;
+
+import br.com.bb.letscode.projetofinal3.model.Analisador;
+import br.com.bb.letscode.projetofinal3.model.Filme;
+
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.Year;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Leitura {
     public static void main(String[] args) throws IOException {
 
         // pega cada linha do arquivo
-        List<String> dataBaseBruto = Files.lines(Paths.get("C:/Users/F3548784/IdeaProjects/ProjetoFinal_Modulo_III_LC/dados/movies1.csv"))
+        List<String> dataBaseBruto = Files.lines(Paths.get("C:\\Users\\F3548784\\IdeaProjects\\ProjetoFinal_Modulo_III_LC\\src\\main\\resources\\dados\\movies1.csv"))
                 .skip(1)
                 .filter(line -> line.contains(" "))
                 .collect(Collectors.toList());
 
         // Compara cada linha da tabela com o regex para separá-la em grupos
-        Set<Filme> dataBaseTrabalhado = new HashSet<Filme>(){
+        HashSet<Filme> dataBaseTrabalhado = new HashSet<Filme>(){
 
         };
         for(String entrada: dataBaseBruto) {
@@ -38,28 +46,19 @@ public class Leitura {
             //System.out.println(filme.toString());
         }
 
-        /*
-        Comparator<Filme> comparator = new Comparator<Filme>() {
-            @Override
-                public int compare(Filme filme1, Filme filme2) {
-                if(filme1.getRank()> filme2.getRank()) return 1;
-                else if (filme1.getRank()< filme2.getRank()) return -1;
-                return 0;
-                }
-
-        };
-
-         */
 
 
 
-        List<Filme> topHorror = dataBaseTrabalhado.stream()
-                .filter(filme -> filme.getGenero().contains("Horror"))
-                //.sorted( (filme1, filme2) -> filme1.compareTo(filme2))
-                .collect(Collectors.toList());
 
-        topHorror.stream().forEach(System.out::println);
 
+
+        List<Filme> topHorror = Analisador.getMelhores20Terror(dataBaseTrabalhado);
+
+        topHorror.stream()
+                .forEach(filme -> System.out.println(filme.getRating() + " " + filme.getTitulo()));
+
+
+        List<List<Filme>> aaaa = Analisador.getMelhores50Anuais(dataBaseTrabalhado);
 
 
 
