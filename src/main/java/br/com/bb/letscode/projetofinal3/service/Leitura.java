@@ -9,6 +9,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.Year;
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -18,20 +20,38 @@ public class Leitura {
 
     static List<String> dataBaseBruto = new ArrayList<>();
 
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) throws IOException, InterruptedException, ExecutionException {
 
-        Files.lines(Paths.get("src/main/resources/dados/movies1.csv"))
-                .parallel()
-                .skip(1)
-                .forEach(dataBaseBruto::add);
+        CompletableFuture<List<String>> future1 = CompletableFuture.supplyAsync(() -> {
+            try {
+                return lerArquivo("src/main/resources/dados/movies1.csv");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
 
-        Files.lines(Paths.get("src/main/resources/dados/movies2.csv"))
-                .parallel()
-                .forEach(dataBaseBruto::add);
+        CompletableFuture<List<String>> future2 = CompletableFuture.supplyAsync(() -> {
+            try {
+                return lerArquivo("src/main/resources/dados/movies2.csv");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
 
-        Files.lines(Paths.get("src/main/resources/dados/movies3.csv"))
-                .parallel()
-                .forEach(dataBaseBruto::add);
+        CompletableFuture<List<String>> future3 = CompletableFuture.supplyAsync(() -> {
+            try {
+                return lerArquivo("src/main/resources/dados/movies3.csv");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        while (!(future1.isDone() && future2.isDone() && future3.isDone())) {
+            //System.out.println("waiting...");
+        }
+        dataBaseBruto.addAll(future1.get());
+        dataBaseBruto.addAll(future2.get());
+        dataBaseBruto.addAll(future3.get());
 
         // Compara cada linha da tabela com o regex para separá-la em grupos
         HashSet<Filme> dataBaseTrabalhado = new HashSet<Filme>();
@@ -104,6 +124,13 @@ public class Leitura {
 
 
     }
+
+    public static List<String> lerArquivo(String arquivo) throws IOException {
+        return Files.lines(Paths.get("src/main/resources/dados/movies1.csv"))
+                .skip(1)
+                .collect(Collectors.toList());
+    }
+
 }
 
 
