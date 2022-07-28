@@ -7,20 +7,23 @@ import br.com.bb.letscode.projetofinal3.model.Filme;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.time.Year;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Leitura {
 
     static List<String> dataBaseBruto = new ArrayList<>();
 
     public static void main(String[] args) throws IOException, InterruptedException, ExecutionException {
+
+        LocalDateTime inicioProcessamento = LocalDateTime.now();
 
         CompletableFuture<List<String>> future1 = CompletableFuture.supplyAsync(() -> {
             try {
@@ -122,6 +125,14 @@ public class Leitura {
             System.out.println(filme.getRating() + " " + filme.getTitulo() + " " + filme.getAno());
         }
 
+        LocalDateTime fimProcessamento = LocalDateTime.now();
+
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss.SSS");
+
+        System.out.println("Inicio do processamento: " + dateFormatter.format(inicioProcessamento));
+        System.out.println("Fim do processamento: " + dateFormatter.format(fimProcessamento));
+        System.out.println("Tempo em milisegundos: " + inicioProcessamento.until(fimProcessamento, ChronoUnit.MILLIS));
+        System.out.println("Tempo em segundos: " + inicioProcessamento.until(fimProcessamento, ChronoUnit.SECONDS));
 
     }
 
