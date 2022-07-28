@@ -15,18 +15,27 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Leitura {
-    public static void main(String[] args) throws IOException {
 
-        // pega cada linha do arquivo
-        List<String> dataBaseBruto = Files.lines(Paths.get("src\\main\\resources\\dados\\movies1.csv"))
+    static List<String> dataBaseBruto = new ArrayList<>();
+
+    public static void main(String[] args) throws IOException, InterruptedException {
+
+        Files.lines(Paths.get("src/main/resources/dados/movies1.csv"))
+                .parallel()
                 .skip(1)
-                .filter(line -> line.contains(" "))
-                .collect(Collectors.toList());
+                .forEach(dataBaseBruto::add);
+
+        Files.lines(Paths.get("src/main/resources/dados/movies2.csv"))
+                .parallel()
+                .forEach(dataBaseBruto::add);
+
+        Files.lines(Paths.get("src/main/resources/dados/movies3.csv"))
+                .parallel()
+                .forEach(dataBaseBruto::add);
 
         // Compara cada linha da tabela com o regex para separá-la em grupos
-        HashSet<Filme> dataBaseTrabalhado = new HashSet<Filme>(){
+        HashSet<Filme> dataBaseTrabalhado = new HashSet<Filme>();
 
-        };
         for(String entrada: dataBaseBruto) {
             final Matcher matcher = Pattern
                     .compile("(?:,|\n|^)(\"(?:(?:\"\")*[^\"]*)*\"|[^\",\n]*|(?:\n|$))")
